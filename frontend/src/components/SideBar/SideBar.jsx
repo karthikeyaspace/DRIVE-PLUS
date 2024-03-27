@@ -18,7 +18,7 @@ export default function SideBar() {
                 <Link to='/api/collections'><h4>New Collection</h4></Link>
               </div>
               <div className="askBar-item">
-                <Link to='/api/collections/none/upload'><h4>New File</h4></Link>
+                <Link to='/api/collections/choose/upload'><h4>New File</h4></Link>
               </div>
             </div>
 
