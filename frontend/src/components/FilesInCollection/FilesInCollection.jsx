@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import './FilesInCollection.css';
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { userContext } from '../../context-api/userContext';
 import axios from "axios";
 
@@ -24,6 +24,11 @@ export default function FilesInCollection() {
                 <p>All Files</p>
             </div>
             <div className="content">
+                <div className="new-fileBtn">
+                    <Link to={`/api/collections/${collectionId}/upload`}>
+                        <button>Add Files</button>
+                    </Link>
+                </div>
                 <div className="files-header">
                     <div className="filetype">Type</div>
                     <div className="filename">Name</div>

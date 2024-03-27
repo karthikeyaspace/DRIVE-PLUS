@@ -1,16 +1,3 @@
-.top{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px;
-    font-size: 2rem;
-}
-
-.content{
-    margin:20px;
-    margin-top: 4rem;
-}
-
 .files-header{
     display: grid;
     grid-template-columns: 60px 3fr  1fr 1fr 1fr;

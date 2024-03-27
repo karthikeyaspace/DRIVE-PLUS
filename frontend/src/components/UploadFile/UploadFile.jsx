@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import './UploadFile.css';
 
 export default function UploadFile() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -38,7 +39,7 @@ export default function UploadFile() {
 
   const handlesubmit = (e) => {
     e.preventDefault();
-    if(collectionId === "choose"){
+    if (collectionId === "choose") {
       var selectOb = document.getElementById('collection');
       collectionId = Number(selectOb.value);
     }
@@ -53,15 +54,15 @@ export default function UploadFile() {
       <div className="top">
         <p>Upload File</p>
       </div>
-      <div className="content">
+      <div className="content-u">
 
-        <form action="" onSubmit={handlesubmit}>
+        <form action="" className='file-form' onSubmit={handlesubmit}>
 
           {
             collectionId === "choose" && (
               <div className="select">
-                <label htmlFor="collection">Choose a collection</label>
-                <select name="collection" id="collection">
+                <select name="collection" id="collection" defaultValue="choose">
+                  <option value="choose" >Choose a collection</option>
                   <option value="1711289476">Collection 1</option>
                   <option value="1711290103">Collection 2</option>
                   <option value="1711290109">Collection 3</option>
@@ -69,14 +70,22 @@ export default function UploadFile() {
               </div>
             )
           }
+
+          {/* <div className="drgdrp">
+            <div className="file-upload">
+              <label htmlFor="file"></label>
+              <input className="file-input" onClick={handleFileChange} type="file" />
+              <button type='submit' className='upload-button'>Upload</button>
+              <div className="card-subtitle">Drag n Drop your file here</div>
+            </div>
+          </div> */}
           <div className="fileinput-box">
             <label htmlFor="file">Choose a file:</label>
             <input type="file" onChange={handleFileChange} />
             <button type='submit'>Upload</button>
           </div>
+
         </form>
-
-
       </ div>
     </div>
   );
