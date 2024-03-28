@@ -1,6 +1,6 @@
 .collections-header{
     display: grid;
-    grid-template-columns: 30% 1fr 1fr 1fr 1fr;
+    grid-template-columns:  30% 1fr 1fr 1fr 1fr 50px 20px;
     font-weight: 600;
     margin-bottom: 10px;
     padding: 10px;
@@ -9,7 +9,7 @@
 
 .collection-row{
     display: grid;
-    grid-template-columns: 30% 1fr 1fr 1fr 1fr;
+    grid-template-columns: 30% 1fr 1fr 1fr 1fr 50px 20px;
     margin: 0 10px;
     padding: 10px ;
     border-bottom: 1px solid #ccc;

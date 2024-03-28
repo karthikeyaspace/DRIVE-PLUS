@@ -92,7 +92,7 @@ api.get('/:username/collections/:collectionId', async (req, res) => {
     //show public qr code of that collection
 
     const username = req.params.username;
-    const collectionId = (+req.params.collectionId);
+    const collectionId = req.params.collectionId;
 
     const collectionOb = await collections.findOne({ "collection.collectionId": collectionId });
     if (collectionOb === null)
@@ -110,7 +110,7 @@ api.get('/:username/collections/:collectionId', async (req, res) => {
 ///get files of collection
 api.get(':username/collections/:collectionId', async(req,res)=>{
     const username = req.params.username;
-    const collectionId = (+req.params.collectionId);
+    const collectionId = req.params.collectionId;
     const collection = await collections.findOne({"collection.collectionId":collectionId});
     if(collection === null)
         return res.send({message:"No collection found"});
@@ -123,7 +123,7 @@ api.get(':username/collections/:collectionId', async(req,res)=>{
 api.delete('/:username/collections/:collectionId', async(req, res) => {
     //first remove files and then remove colleciton
     const username = req.params.username;
-    const collectionId = (+req.params.collectionId);
+    const collectionId = req.params.collectionId;
     try{
         let collection = await collections.findOne({"collection.collectionId":collectionId});
         console.log(collection)
@@ -168,7 +168,7 @@ api.post('/:username/collections/:collectionId/upload', upload.single('file'), a
     //add file to user's files
     //return fileid
     try {
-        const collectionId = (+req.params.collectionId);
+        const collectionId = req.params.collectionId;
         const file = req.file;
         const fileData = {
             filename: file.originalname,
@@ -195,7 +195,7 @@ api.use('/uploads', express.static('uploads'));
 api.delete('/:username/collections/:collectionId/:fileId', async (req, res) => {
     try {
         const username = req.params.username;
-        const collectionId = (+req.params.collectionId);
+        const collectionId = req.params.collectionId;
         const fileId = req.params.fileId
 
         let collection = await collections.findOne({ "collection.collectionId": collectionId })

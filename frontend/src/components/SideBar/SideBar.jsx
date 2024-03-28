@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import './SideBar.css'
 import { userContext } from '../../context-api/userContext'
 import axios from 'axios'
+import uniqueId from './uniqueId'
 
 export default function SideBar() {
 
@@ -15,11 +16,13 @@ export default function SideBar() {
     const collectionName = inputfield.value;
     const collectionData = {
       collectionName: collectionName,
-      collectiondId: Date.now(),
+      collectionId: uniqueId(),
       username: user,
       isPublic: false,
       files: []
     }
+
+    
 
     await axios.post(`http://localhost:6969/api/${user}/collections/`, collectionData)
     .then(res => {

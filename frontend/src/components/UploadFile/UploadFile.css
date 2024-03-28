@@ -48,3 +48,16 @@ select {
 	height: 100%;
 	opacity: 0;
 }
+
+.file-submit{
+	width: 100px;
+	height: 30px;
+	border-radius: 5px;
+	background-color: rgb(69, 69, 172);
+	color: white;
+	font-size: 1rem;
+}
+
+.file-submit:hover{
+	background-color: rgb(139, 139, 201);
+}
