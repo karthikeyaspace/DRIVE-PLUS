@@ -3,18 +3,35 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './UploadFile.css';
+import { userContext } from '../../context-api/userContext';
 
 export default function UploadFile() {
   const [selectedFile, setSelectedFile] = useState(null);
   const navigate = useNavigate()
-  let { collectionId } = useParams()
+  var { collectionId } = useParams()
+  const { user } = useContext(userContext)
+  const [collections, setCollections] = useState([]) 
+
   console.log(collectionId)
-
-
+  
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
 
+
+  if(collectionId === "choose"){
+    //get collections from the api
+    useEffect(()=>{
+        axios.get(`http://localhost:6969/api/${user}/collections`)
+        .then((res)=>{
+            setCollections(res.data)
+        })
+        .catch(err=>{
+            console.log("Error fetching collections ", err)
+        })
+    },[])
+    console.log(collections)
+  }
 
   const handleUpload = async (collectionId) => {
     if (!selectedFile) {
@@ -41,7 +58,7 @@ export default function UploadFile() {
     e.preventDefault();
     if (collectionId === "choose") {
       var selectOb = document.getElementById('collection');
-      collectionId = Number(selectOb.value);
+      collectionId = selectOb.value;
     }
     console.log(collectionId);
     handleUpload(collectionId)
@@ -62,10 +79,12 @@ export default function UploadFile() {
             collectionId === "choose" ? (
               <div className="select">
                 <select name="collection" id="collection" defaultValue="choose">
-                  <option value="choose" >Choose a collection</option>
-                  <option value="1711289476">Collection 1</option>
-                  <option value="1711290103">Collection 2</option>
-                  <option value="1711290109">Collection 3</option>
+                  <option value="choose" disabled >Choose a collection</option>
+                  {
+                    collections.map((collection, index) => {
+                      return <option key={index} value={collection.collection.collectionId}>{collection.collection.collectionName}</option>
+                    })
+                  }
                 </select>
               </div>
             ) : (

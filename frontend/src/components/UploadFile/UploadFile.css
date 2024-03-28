@@ -3,12 +3,19 @@ select {
 	appearance: none;
 	border: 0;
 	outline: 0;
-	width: 10rem;
-	padding: 1rem;
+	width: 13rem;
+	padding: 10px;
 	color: black;
 	border-radius: 5px;
 	box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.293);
 	cursor: pointer;
+	font-size: medium;
+	text-align: center;
+}
+
+option{
+	color: black;
+	font-size: medium;
 }
 
 .drgdrp{
