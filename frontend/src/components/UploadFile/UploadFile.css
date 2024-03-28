@@ -10,3 +10,41 @@ select {
 	box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.293);
 	cursor: pointer;
 }
+
+.drgdrp{
+	width: 50%;
+	height: 80%;
+	box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.293);
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.file-form{
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-rows: 100px 1fr;
+	place-items: center;
+}
+
+.fileinput-box{
+	width: 70%;
+	height: 70%;
+	border-radius: 2rem;
+	border: 2px dashed black;
+}
+
+.fileinput-box label{
+	position: relative;
+	top: 50%;
+	left: 12%;
+}
+
+.file-input{
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}

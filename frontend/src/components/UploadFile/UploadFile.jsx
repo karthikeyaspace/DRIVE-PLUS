@@ -59,7 +59,7 @@ export default function UploadFile() {
         <form action="" className='file-form' onSubmit={handlesubmit}>
 
           {
-            collectionId === "choose" && (
+            collectionId === "choose" ? (
               <div className="select">
                 <select name="collection" id="collection" defaultValue="choose">
                   <option value="choose" >Choose a collection</option>
@@ -67,6 +67,10 @@ export default function UploadFile() {
                   <option value="1711290103">Collection 2</option>
                   <option value="1711290109">Collection 3</option>
                 </select>
+              </div>
+            ) : (
+              <div>
+                <p style={{fontSize:"2rem"}}>Select a File</p>
               </div>
             )
           }
@@ -79,10 +83,14 @@ export default function UploadFile() {
               <div className="card-subtitle">Drag n Drop your file here</div>
             </div>
           </div> */}
-          <div className="fileinput-box">
-            <label htmlFor="file">Choose a file:</label>
-            <input type="file" onChange={handleFileChange} />
-            <button type='submit'>Upload</button>
+
+          <div className="drgdrp">
+
+            <div className="fileinput-box">
+              <label htmlFor="file-input" >Select to choose a file or drag n drop here</label>
+              <input type="file" id='file-input' multiple className='file-input' onChange={handleFileChange} />
+            </div>
+            <button type='submit' className='file-submit'>Upload</button>
           </div>
 
         </form>
