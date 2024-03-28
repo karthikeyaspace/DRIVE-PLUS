@@ -77,7 +77,6 @@ api.get('/:username/collections', async (req, res) => {
 
 //create collection
 api.post('/:username/collections', async (req, res) => {
-
     //create collection
     const collection = req.body;
     username = req.params.username;
