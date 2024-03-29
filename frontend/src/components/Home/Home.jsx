@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import './Home.css';
 import { userContext } from '../../context-api/userContext';
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Home() {
     const { user } = useContext(userContext)
@@ -44,7 +45,7 @@ export default function Home() {
                                 <div className="fileuploaddata"> {file.uploadedAt.slice(0, 10)}</div>
                                 <div className="filesize">{(file.size / 1024).toString().slice(0, 3)} kb</div>
                                 <div className="collectionName"> {file.collection} </div>
-                                {/* <div className="fileDownload"> ⬇️ </div> */}
+                                <Link to={`/api/collections/${file.collection}/${file.fileId}`}> <div className="fileView"> View file </div>  </Link>
                             </div>
                         ))
                     }

@@ -49,7 +49,8 @@ export default function FilesInCollection() {
                                         <div className="fileuploaddata"> {file.uploadedAt.slice(0, 10)}</div>
                                         <div className="filesize">{(file.size / 1024).toString().slice(0, 3)} kb</div>
                                         <div className="collectionName"> {file.collection} </div>
-                                        {/* <div className="fileDownload"> ⬇️ </div> */}
+                                        <Link to={`/api/collections/${collectionId}/${file.fileId}`}> <div className="fileView"> View file </div>  </Link>
+                                        {/* css applied from home.css file */}
                                     </div>
                                 ))
                             }

@@ -118,6 +118,26 @@ api.get(':username/collections/:collectionId', async(req,res)=>{
 
 })
 
+//get file
+api.get('/:username/collections/:collectionId/:fileId', async (req, res) => {
+    //show file
+    const username = req.params.username;
+    const collectionId = req.params.collectionId;
+    const fileId = req.params.fileId;
+
+    const collection = await collections.findOne({ "collection.collectionId": collectionId });
+    if (collection === null)
+        return res.send({ message: "No collection found" });
+
+    const file = collection.collection.files.find(file => file.fileId === fileId);
+    if (file === null)
+        return res.send({ message: "No file found" });
+
+    return res.send(file)
+
+})
+
+
 
 //delete collection
 api.delete('/:username/collections/:collectionId', async(req, res) => {
@@ -188,7 +208,7 @@ api.post('/:username/collections/:collectionId/upload', upload.single('file'), a
     }
 });
 
-api.use('/uploads', express.static('uploads'));
+api.use('/data', express.static('data'));
 
 
 //delete files using file id from collection

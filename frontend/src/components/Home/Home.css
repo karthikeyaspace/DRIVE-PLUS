@@ -1,6 +1,6 @@
 .files-header{
     display: grid;
-    grid-template-columns: 60px 3fr  1fr 1fr 1fr;
+    grid-template-columns: 60px 3fr  1fr 1fr 1fr 90px;
     font-weight: 600;
     margin-bottom: 10px;
     padding: 10px;
@@ -9,7 +9,7 @@
 
 .home-file{
     display: grid;
-    grid-template-columns: 60px 3fr  1fr 1fr 1fr;
+    grid-template-columns: 60px 3fr  1fr 1fr 1fr 90px;
     margin: 0 10px;
     padding: 10px ;
     border-bottom: 1px solid #ccc;
